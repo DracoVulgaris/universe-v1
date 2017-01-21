@@ -1,5 +1,6 @@
 package com.universe.environment;
 
+import com.universe.exceptions.LocationException;
 import com.universe.exceptions.UniverseException;
 import com.universe.settings.UniverseConfiguration;
 import org.slf4j.Logger;
@@ -32,10 +33,14 @@ public class Universe implements UniverseConfiguration {
             for (int y = 0; y < HEIGHT; ++y) {
                 List<List<Sector>> height = new ArrayList<>();
                 for (int z = 0; z < DEPTH; ++z) {
-                    List<Sector> depth = new ArrayList<>();
-                    Sector s = new Sector (x, y, z);
-                    depth.add(s);
-                    height.add(z, depth);
+                    try {
+                        List<Sector> depth = new ArrayList<>();
+                        Sector sector = new Sector(new Location(x, y, z));
+                        depth.add(sector);
+                        height.add(z, depth);
+                    } catch(LocationException le) {
+                        log.error(le.getMessage(), le);
+                    }
                 }
                width.add(y, height);
             }
@@ -51,7 +56,7 @@ public class Universe implements UniverseConfiguration {
      * @return the {@link Sector} at the X, Y, Z coordinates provided
      * @throws UniverseException the requested sector is outside the universe
      */
-    public Sector getSector(Integer width, Integer height, Integer depth) throws UniverseException {
+    Sector getSector(Integer width, Integer height, Integer depth) throws UniverseException {
         if (width >= WIDTH || height >= HEIGHT || depth >= DEPTH) {
             String message = "\nRequested sector (width: " + width + ", height: " + height + ", depth: " + depth + ") is outside the Universe.\n"
                     + "Universe dimensions are width: " + WIDTH + " height: " + HEIGHT + " depth: " + DEPTH + "\n"
@@ -59,5 +64,14 @@ public class Universe implements UniverseConfiguration {
             throw new UniverseException(message);
         }
         return universe.get(width).get(height).get(depth).get(0);
+    }
+
+    /**
+     * Returns a sector at a given location in the {@link Universe}
+     * @param location the width, height and depth
+     * @return the Sector at the given location
+     */
+    public Sector getSector(Location location) {
+        return universe.get(location.getWidth()).get(location.getHeight()).get(location.getDepth()).get(0);
     }
 }

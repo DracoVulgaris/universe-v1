@@ -1,0 +1,23 @@
+package com.universe.elements;
+
+/**
+ * An amount of edible Food that can be consumed by a life form that holds this resource
+ *
+ * @since 21/01/2017.
+ */
+public class Food extends Resource {
+
+    public Food(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Food: " + quantity;
+    }
+
+    @Override
+    public String getResourceName() {
+        return "Food";
+    }
+}

@@ -6,7 +6,7 @@ This project is an attempt to iteritively simulate the creation and evolution of
 
 ##Tests
 
-TODO
+Run the `TestSuite` to execute all the unit tests for this project
 
 ##Contributors
 

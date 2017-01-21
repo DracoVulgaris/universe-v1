@@ -29,7 +29,10 @@ public class UniverseTest {
     @Test
     public void testGetSectorOneTwoThree() throws Exception {
         Sector oneTwoThree = universe.getSector(1, 2, 3);
-        assertEquals("Expected sector one, two, three", "Sector:- width: 1 height: 2 depth: 3", oneTwoThree.toString());
+        Location location = oneTwoThree.getLocation();
+        assertEquals("Expected sector one, two, three", new Integer(1), location.getWidth());
+        assertEquals("Expected sector one, two, three", new Integer(2), location.getHeight());
+        assertEquals("Expected sector one, two, three", new Integer(3), location.getDepth());
     }
 
     @Test(expected=UniverseException.class)

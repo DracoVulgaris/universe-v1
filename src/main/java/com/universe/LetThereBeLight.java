@@ -1,9 +1,10 @@
 package com.universe;
 
 
+import com.universe.environment.Location;
 import com.universe.environment.Sector;
 import com.universe.environment.Universe;
-import com.universe.exceptions.UniverseException;
+import com.universe.exceptions.LocationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,11 +21,11 @@ public class LetThereBeLight {
         log.debug("START");
         Universe universe = new Universe();
         try {
-            Sector alpha = universe.getSector(0,0,0);
-            Sector omega = universe.getSector(Universe.WIDTH -1 , Universe.HEIGHT -1, Universe.DEPTH -1);
+            Sector alpha = universe.getSector(new Location(0,0,0));
+            Sector omega = universe.getSector(new Location(Universe.WIDTH - 1 , Universe.HEIGHT -1, Universe.DEPTH -1));
             log.info("Alpha Sector: " + alpha.toString());
             log.info("Omega Sector: " + omega.toString());
-        } catch (UniverseException e) {
+        } catch (LocationException e) {
             log.error("Error getting sector.", e);
         }
         log.debug("END");
