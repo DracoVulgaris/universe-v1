@@ -11,4 +11,8 @@ public class UniverseException extends Exception {
     public UniverseException(String message) {
         super(message);
     }
+
+    public UniverseException(String message, Throwable e) {
+        super(message, e);
+    }
 }

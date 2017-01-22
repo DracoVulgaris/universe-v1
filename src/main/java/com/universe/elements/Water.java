@@ -7,10 +7,6 @@ package com.universe.elements;
  */
 public class Water extends Resource {
 
-    public Water(Integer quantity) {
-        this.quantity = quantity;
-    }
-
     @Override
     public String toString() {
         return "Water: " + quantity;

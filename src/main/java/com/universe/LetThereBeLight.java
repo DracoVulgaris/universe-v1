@@ -5,8 +5,13 @@ import com.universe.environment.Location;
 import com.universe.environment.Sector;
 import com.universe.environment.Universe;
 import com.universe.exceptions.LocationException;
+import com.universe.exceptions.UniverseException;
+import com.universe.utilities.PropertiesManager;
+import com.universe.utilities.PropertyKeys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static com.universe.utilities.DateUtilities.getFormattedCurrentDateTime;
 
 /**
  * The main class used to drive the creation of the Universe simulation.
@@ -18,16 +23,20 @@ public class LetThereBeLight {
     private static Logger log = LoggerFactory.getLogger(LetThereBeLight.class);
 
     public static void main(String[] args) {
-        log.debug("START");
-        Universe universe = new Universe();
+        log.debug("START: " + getFormattedCurrentDateTime());
+
         try {
+            PropertiesManager p = new PropertiesManager();
+            Universe universe = new Universe();
             Sector alpha = universe.getSector(new Location(0,0,0));
-            Sector omega = universe.getSector(new Location(Universe.WIDTH - 1 , Universe.HEIGHT -1, Universe.DEPTH -1));
+            Sector omega = universe.getSector(new Location(new Integer(p.getUniverseProperty(PropertyKeys.WIDTH.key())) - 1 ,
+                    new Integer(p.getUniverseProperty(PropertyKeys.HEIGHT.key())) -1,
+                    new Integer(p.getUniverseProperty(PropertyKeys.DEPTH.key())) -1));
             log.info("Alpha Sector: " + alpha.toString());
             log.info("Omega Sector: " + omega.toString());
-        } catch (LocationException e) {
-            log.error("Error getting sector.", e);
+        } catch (LocationException | UniverseException e) {
+            log.error(e.getMessage(), e);
         }
-        log.debug("END");
+        log.debug("END: " + getFormattedCurrentDateTime());
     }
 }

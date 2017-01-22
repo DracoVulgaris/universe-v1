@@ -16,7 +16,8 @@ public class WaterTest {
 
     @Before
     public void setUp() throws Exception {
-        water = new Water(20);
+        water = new Water();
+        water.setQuantity(20);
     }
 
     @Test

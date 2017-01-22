@@ -7,12 +7,6 @@ package com.universe.elements;
  */
 public class Oxygen extends Resource {
 
-
-    public Oxygen(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-
     @Override
     public String toString() {
         return "Oxygen: " + quantity;

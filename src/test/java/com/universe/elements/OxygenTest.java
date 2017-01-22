@@ -16,7 +16,8 @@ public class OxygenTest {
 
     @Before
     public void setUp() {
-        oxygen = new Oxygen(6);
+        oxygen = new Oxygen();
+        oxygen.setQuantity(6);
     }
 
     @Test

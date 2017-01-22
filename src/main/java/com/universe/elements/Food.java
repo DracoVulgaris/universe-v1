@@ -7,10 +7,6 @@ package com.universe.elements;
  */
 public class Food extends Resource {
 
-    public Food(Integer quantity) {
-        this.quantity = quantity;
-    }
-
     @Override
     public String toString() {
         return "Food: " + quantity;

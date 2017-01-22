@@ -2,6 +2,7 @@ package com.universe.environment;
 
 import com.universe.elements.Food;
 import com.universe.elements.Oxygen;
+import com.universe.elements.Resource;
 import com.universe.elements.Water;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,35 +16,28 @@ public class SectorTest {
 
     private Sector sector;
     private Location location;
-    private Oxygen oxygen = new Oxygen(75);
-    private Water water = new Water(100);
-    private Food food = new Food(10);
+    private Oxygen oxygen = new Oxygen();
+    private Water water = new Water();
+    private Food food = new Food();
 
     @Before
     public void setUp() throws Exception {
         location = new Location(7, 1, 9);
         sector = new Sector(location);
+        oxygen.setQuantity(75);
+        water.setQuantity(100);
+        food.setQuantity(10);
     }
 
     @Test
-    public void setSingleOxygen() throws Exception {
-        sector.setOxygen(oxygen);
-        assertNotNull("Oxygen in Sector is incorrect", sector.getOxygen());
+    public void getResources() throws Exception {
+        assertNotNull("Resources in Sector is incorrect", sector.getResources());
     }
 
     @Test
-    public void setNullOxygen() throws Exception {
-        sector.setOxygen(null);
-        assertNull("Oxygen in Sector is incorrect", sector.getOxygen());
-    }
-
-    @Test
-    public void setMultipleOxygen() throws Exception {
-        for (int x = 0; x < 10;++x) {
-            Oxygen o = new Oxygen(x);
-            sector.setOxygen(o);
-        }
-        assertEquals("Oxygen in Sector is incorrect", new Integer(10), sector.getResourceCount().get("Oxygen"));
+    public void getResource() throws Exception {
+        Resource test = sector.getResources().get("Oxygen");
+        assertNotNull("Oxygen in Sector is incorrect", test);
     }
 
 

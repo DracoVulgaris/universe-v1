@@ -7,7 +7,7 @@ package com.universe.elements;
  */
  public abstract class Resource {
 
-    Integer quantity;
+    Integer quantity = 0;
 
 
     /**
@@ -28,6 +28,14 @@ package com.universe.elements;
         return suppliedAmount;
     }
 
+    public void setQuantity(Integer amount) {
+        this.quantity = amount;
+    }
+
+    /**
+     * Get the name of this Resource
+     * @return the name of the Resource
+     */
     public abstract String getResourceName();
 
 }

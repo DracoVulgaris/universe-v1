@@ -15,7 +15,8 @@ public class FoodTest  {
 
     @Before
     public void setUp() throws Exception {
-        food = new Food(100);
+        food = new Food();
+        food.setQuantity(100);
     }
 
     @Test

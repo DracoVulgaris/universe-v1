@@ -6,6 +6,7 @@ import com.universe.elements.WaterTest;
 import com.universe.environment.LocationTest;
 import com.universe.environment.SectorTest;
 import com.universe.environment.UniverseTest;
+import com.universe.utilities.PropertiesManagerTest;
 import com.universe.utilities.RandomiserTest;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
@@ -18,7 +19,8 @@ import org.junit.runner.RunWith;
         WaterTest.class,
         LocationTest.class,
         SectorTest.class,
-        RandomiserTest.class
+        RandomiserTest.class,
+        PropertiesManagerTest.class
 })
 public class TestSuite {
     //nothing

@@ -1,6 +1,8 @@
 package com.universe.environment;
 
 import com.universe.exceptions.LocationException;
+import com.universe.utilities.PropertiesManager;
+import com.universe.utilities.PropertyKeys;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,10 +14,12 @@ import static org.junit.Assert.*;
 public class LocationTest {
 
     private Location location;
+    private PropertiesManager p;
 
     @Before
     public void setUp() throws Exception {
         location = new Location(9, 3, 7);
+        p = new PropertiesManager("universe.properties");
     }
 
     @Test
@@ -35,7 +39,8 @@ public class LocationTest {
 
     @Test (expected=LocationException.class)
     public void testException() throws Exception {
-        Location oops = new Location(Location.WIDTH, 0, 7);
+        Integer width = new Integer(p.getUniverseProperty(PropertyKeys.WIDTH.key()));
+        Location oops = new Location(width, 0, 7);
     }
 
 }
