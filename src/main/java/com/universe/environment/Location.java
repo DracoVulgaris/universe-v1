@@ -31,15 +31,15 @@ public class Location {
         this.depth = depth;
     }
 
-    Integer getWidth() {
+    public Integer getWidth() {
         return width;
     }
 
-    Integer getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
-    Integer getDepth() {
+    public Integer getDepth() {
         return depth;
     }
 
@@ -53,7 +53,7 @@ public class Location {
 
     @Override
     public int hashCode() {
-        return (this.hashCode()  + width.hashCode() + height.hashCode() + depth.hashCode());
+        return (width.hashCode() + height.hashCode() + depth.hashCode()) * 31;
     }
 
     @Override
