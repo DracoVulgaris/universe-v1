@@ -1,7 +1,5 @@
 package com.universe.utilities;
 
-import com.universe.exceptions.PropertiesException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -17,7 +15,7 @@ public class PropertiesManager {
         try {
             loadUniverseProperties();
             popluateConstants();
-        } catch (PropertiesException e) {
+        } catch (IOException e) {
             //fatal error as everthing depend on this so just die
             System.exit(1);
         }
@@ -47,15 +45,11 @@ public class PropertiesManager {
 
     /**
      * Populate the immutable list of properties needed to create the {@link com.universe.environment.Universe}
-     * @throws PropertiesException unable to load Properties
+     * @throws IOException unable to load Properties
      */
-    private static void loadUniverseProperties() throws PropertiesException {
-        try {
-            universeProperties = new Properties();
-            InputStream resourceStream = PropertiesManager.class.getClassLoader().getResourceAsStream("universe.properties");
-            universeProperties.load(resourceStream);
-        } catch (IOException e) {
-            throw new PropertiesException(e.getMessage(), e);
-        }
+    private static void loadUniverseProperties() throws IOException {
+        universeProperties = new Properties();
+        InputStream resourceStream = PropertiesManager.class.getClassLoader().getResourceAsStream("universe.properties");
+        universeProperties.load(resourceStream);
     }
 }

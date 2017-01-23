@@ -2,7 +2,6 @@ package com.universe.utilities;
 
 import com.universe.environment.Location;
 import com.universe.exceptions.LocationException;
-import com.universe.exceptions.PropertiesException;
 import com.universe.exceptions.UniverseException;
 
 import java.util.HashMap;
@@ -26,9 +25,8 @@ public class LocationHelper {
      * @return a {@link Map} of quantities keyed by {@link Location}
      * @throws UniverseException thrown if unable to load the {@link com.universe.environment.Universe}s properties
      * @throws LocationException thrown if unable to create a {@link Location}
-     * @throws PropertiesException thrown is unable to load {@link java.util.Properties}
      */
-    public static Map<Location, Integer> getWeightedLocationMatrix(Location centrePoint, Integer maximumQuantity, Integer spread) throws UniverseException, LocationException, PropertiesException {
+    public static Map<Location, Integer> getWeightedLocationMatrix(Location centrePoint, Integer maximumQuantity, Integer spread) throws UniverseException, LocationException {
         Map<Location, Integer> matrix = new HashMap<>();
 
         //always add the centrePoint Location and it always gets maximumQuantity even if that is zero

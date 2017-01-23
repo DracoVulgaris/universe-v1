@@ -1,7 +1,6 @@
 package com.universe.environment;
 
 import com.universe.exceptions.LocationException;
-import com.universe.exceptions.PropertiesException;
 import com.universe.utilities.PropertiesManager;
 
 /**
@@ -14,9 +13,8 @@ public class Location {
     private Integer width;
     private Integer height;
     private Integer depth;
-    private PropertiesManager propertiesManager;
 
-    public Location(Integer width, Integer height, Integer depth) throws PropertiesException, LocationException {
+    public Location(Integer width, Integer height, Integer depth) throws LocationException {
         Integer universeMaxWidth = PropertiesManager.UNIVERSE_MAX_WIDTH;
         Integer universeMaxHeight = PropertiesManager.UNIVERSE_MAX_HEIGHT;
         Integer universeMaxDepth = PropertiesManager.UNIVERSE_MAX_DEPTH;
