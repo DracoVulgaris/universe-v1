@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.Map;
 
-import static com.universe.utilities.LocationHelper.getWeightedLocationMatrix;
+import static com.universe.utilities.LocationHelper.getWeightedQuantityLocationMatrix;
 import static com.universe.utilities.LocationHelper.maximumDistanceFromCentrePoint;
 import static org.junit.Assert.*;
 
@@ -26,7 +26,7 @@ public class LocationHelperTest {
 
     @Test
     public void getWeightedLocationMatrixZeroSpread() throws Exception {
-        Map<Location, Integer> response = getWeightedLocationMatrix(centrePoint, 100, 0);
+        Map<Location, Integer> response = getWeightedQuantityLocationMatrix(centrePoint, 100, 0);
         assertNotNull(response);
         Integer actual = response.get(centrePoint);
         assertEquals(new Integer(100), actual);
@@ -35,7 +35,7 @@ public class LocationHelperTest {
 
     @Test
     public void getWeightedLocationMatrixZeroMaxQuantity() throws Exception {
-        Map<Location, Integer> response = getWeightedLocationMatrix(centrePoint, 0, 5);
+        Map<Location, Integer> response = getWeightedQuantityLocationMatrix(centrePoint, 0, 5);
         assertNotNull(response);
         Integer actual = response.get(centrePoint);
         assertEquals(new Integer(0), actual);
@@ -44,14 +44,14 @@ public class LocationHelperTest {
 
     @Test
     public void getWeightedLocationMatrixSpreadThree() throws Exception {
-        Map<Location, Integer> response = getWeightedLocationMatrix(centrePoint, 100, 3);
+        Map<Location, Integer> response = getWeightedQuantityLocationMatrix(centrePoint, 100, 3);
         assertNotNull(response);
         assertEquals(cubeSizeCalculator(3), new Integer(response.size()));
     }
 
     @Test
     public void getWeightedLocationMatrixSpreadFour() throws Exception {
-        Map<Location, Integer> response = getWeightedLocationMatrix(centrePoint, 100, 4);
+        Map<Location, Integer> response = getWeightedQuantityLocationMatrix(centrePoint, 100, 4);
         assertNotNull(response);
         assertEquals(cubeSizeCalculator(4), new Integer(response.size()));
     }
@@ -72,7 +72,7 @@ public class LocationHelperTest {
 
     @Test
     public void getWeightedLocationMatrixQuantityAtOutSide() throws Exception {
-        Map<Location, Integer> response = getWeightedLocationMatrix(centrePoint, 100, 4);
+        Map<Location, Integer> response = getWeightedQuantityLocationMatrix(centrePoint, 100, 4);
         Location testLocation = new Location(1,5,5);
         Integer actualQuantity = response.get(testLocation);
         assertEquals(new Integer(25), actualQuantity);
@@ -80,7 +80,7 @@ public class LocationHelperTest {
 
     @Test
     public void getWeightedLocationMatrixQuantityNextToCentre() throws Exception {
-        Map<Location, Integer> response = getWeightedLocationMatrix(centrePoint, 100, 4);
+        Map<Location, Integer> response = getWeightedQuantityLocationMatrix(centrePoint, 100, 4);
         Location testLocation = new Location(5,5,4);
         Integer actualQuantity = response.get(testLocation);
         assertEquals(new Integer(100), actualQuantity);
@@ -88,7 +88,7 @@ public class LocationHelperTest {
 
     @Test
     public void getWeightedLocationMatrixQuantityAtOneTwoOne() throws Exception {
-        Map<Location, Integer> response = getWeightedLocationMatrix(centrePoint, 100, 4);
+        Map<Location, Integer> response = getWeightedQuantityLocationMatrix(centrePoint, 100, 4);
         Location testLocation = new Location(1,2,1);
         Integer actualQuantity = response.get(testLocation);
         assertEquals(new Integer(25), actualQuantity);
@@ -96,7 +96,7 @@ public class LocationHelperTest {
 
     @Test
     public void getWeightedLocationMatrixQuantityAtThreeThreeThree() throws Exception {
-        Map<Location, Integer> response = getWeightedLocationMatrix(centrePoint, 100, 4);
+        Map<Location, Integer> response = getWeightedQuantityLocationMatrix(centrePoint, 100, 4);
         Location testLocation = new Location(3,3,3);
         Integer actualQuantity = response.get(testLocation);
         assertEquals(new Integer(50), actualQuantity);

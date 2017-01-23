@@ -26,7 +26,7 @@ public class LocationHelper {
      * @throws UniverseException thrown if unable to load the {@link com.universe.environment.Universe}s properties
      * @throws LocationException thrown if unable to create a {@link Location}
      */
-    public static Map<Location, Integer> getWeightedLocationMatrix(Location centrePoint, Integer maximumQuantity, Integer spread) throws UniverseException, LocationException {
+    public static Map<Location, Integer> getWeightedQuantityLocationMatrix(Location centrePoint, Integer maximumQuantity, Integer spread) throws UniverseException, LocationException {
         Map<Location, Integer> matrix = new HashMap<>();
 
         //always add the centrePoint Location and it always gets maximumQuantity even if that is zero
@@ -66,7 +66,7 @@ public class LocationHelper {
     }
 
     /**
-     * Calculates the maximum distance of any of width, heith or depth dimension from the same dimensions of a nominated
+     * Calculates the maximum distance of any of width, height or depth dimension from the same dimensions of a nominated
      * centre point
      * @param centrePoint the reference point to caluclate distance from
      * @param testLocation the {@link Location} to get the maximum distance from
