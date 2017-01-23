@@ -12,28 +12,28 @@ import static org.junit.Assert.*;
  */
 public class PropertiesManagerTest {
 
-    private PropertiesManager manager;
+    //private PropertiesManager manager;
 
     @Before
     public void setUp() throws Exception {
-        manager = new PropertiesManager("universe.properties");
+        //manager = PropertiesManager.getInstance("universe.properties");
     }
 
     @Test
     public void getUniversePropertyNotNull() throws Exception {
-        String test = manager.getUniverseProperty(PropertyKeys.WIDTH.key());
+        String test = PropertiesManager.getUniverseProperty(PropertyKeys.WIDTH.key());
         assertNotNull(test);
     }
 
     @Test
     public void getUniversePropertyIsNull() throws Exception {
-        String test = manager.getUniverseProperty("FRED");
+        String test = PropertiesManager.getUniverseProperty("FRED");
         assertNull(test);
     }
 
     @Test
     public void getUniversePropertyValue() throws Exception {
-        String test = manager.getUniverseProperty(PropertyKeys.DEPTH.key());
+        String test = PropertiesManager.getUniverseProperty(PropertyKeys.DEPTH.key());
         assertEquals("Property is incorrect", "10", test);
     }
 }

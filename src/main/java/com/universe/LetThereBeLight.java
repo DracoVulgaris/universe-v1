@@ -5,6 +5,7 @@ import com.universe.environment.Location;
 import com.universe.environment.Sector;
 import com.universe.environment.Universe;
 import com.universe.exceptions.LocationException;
+import com.universe.exceptions.PropertiesException;
 import com.universe.exceptions.UniverseException;
 import com.universe.utilities.PropertiesManager;
 import com.universe.utilities.PropertyKeys;
@@ -26,15 +27,14 @@ public class LetThereBeLight {
         log.debug("START: " + getFormattedCurrentDateTime());
 
         try {
-            PropertiesManager p = new PropertiesManager();
             Universe universe = new Universe();
             Sector alpha = universe.getSector(new Location(0,0,0));
-            Sector omega = universe.getSector(new Location(new Integer(p.getUniverseProperty(PropertyKeys.WIDTH.key())) - 1 ,
-                    new Integer(p.getUniverseProperty(PropertyKeys.HEIGHT.key())) -1,
-                    new Integer(p.getUniverseProperty(PropertyKeys.DEPTH.key())) -1));
+            Sector omega = universe.getSector(new Location(new Integer(PropertiesManager.getUniverseProperty(PropertyKeys.WIDTH.key())) - 1 ,
+                    new Integer(PropertiesManager.getUniverseProperty(PropertyKeys.HEIGHT.key())) -1,
+                    new Integer(PropertiesManager.getUniverseProperty(PropertyKeys.DEPTH.key())) -1));
             log.info("Alpha Sector: " + alpha.toString());
             log.info("Omega Sector: " + omega.toString());
-        } catch (LocationException | UniverseException e) {
+        } catch (LocationException | UniverseException | PropertiesException e) {
             log.error(e.getMessage(), e);
         }
         log.debug("END: " + getFormattedCurrentDateTime());

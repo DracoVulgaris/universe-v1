@@ -1,9 +1,9 @@
 package com.universe.environment;
 
 import com.universe.exceptions.LocationException;
+import com.universe.exceptions.PropertiesException;
 import com.universe.exceptions.UniverseException;
 import com.universe.utilities.PropertiesManager;
-import com.universe.utilities.PropertyKeys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,16 +26,15 @@ public class Universe {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
 
-    public Universe() throws UniverseException, LocationException {
-        propertiesManager = new PropertiesManager();
-        WIDTH = new Integer(propertiesManager.getUniverseProperty(PropertyKeys.WIDTH.key()));
-        HEIGHT = new Integer(propertiesManager.getUniverseProperty(PropertyKeys.HEIGHT.key()));
-        DEPTH = new Integer(propertiesManager.getUniverseProperty(PropertyKeys.DEPTH.key()));
+    public Universe() throws LocationException, PropertiesException, UniverseException {
+        WIDTH = PropertiesManager.UNIVERSE_MAX_WIDTH;
+        HEIGHT = PropertiesManager.UNIVERSE_MAX_HEIGHT;
+        DEPTH = PropertiesManager.UNIVERSE_MAX_DEPTH;
         build();
         log.debug("Universe has been created");
     }
 
-    private void build() throws UniverseException, LocationException {
+    private void build() throws UniverseException, LocationException, PropertiesException {
         for (int x = 0; x < WIDTH; ++x) {
             List<List<List<Sector>>> width = new ArrayList<>();
             for (int y = 0; y < HEIGHT; ++y) {

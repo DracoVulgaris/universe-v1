@@ -9,17 +9,17 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * Tests for the {@link Location} class
+ *
  * @since 21/01/2017.
  */
 public class LocationTest {
 
     private Location location;
-    private PropertiesManager p;
 
     @Before
     public void setUp() throws Exception {
         location = new Location(9, 3, 7);
-        p = new PropertiesManager("universe.properties");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class LocationTest {
 
     @Test (expected=LocationException.class)
     public void testException() throws Exception {
-        Integer width = new Integer(p.getUniverseProperty(PropertyKeys.WIDTH.key()));
+        Integer width = new Integer(PropertiesManager.getUniverseProperty(PropertyKeys.WIDTH.key()));
         Location oops = new Location(width, 0, 7);
     }
 

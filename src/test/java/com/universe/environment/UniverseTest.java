@@ -17,11 +17,9 @@ import static org.junit.Assert.assertNotNull;
 public class UniverseTest {
 
     private Universe universe;
-    private PropertiesManager p;
 
     @Before
     public void setUp() throws Exception {
-        p = new PropertiesManager();
         universe = new Universe();
     }
 
@@ -44,7 +42,7 @@ public class UniverseTest {
 
     @Test(expected=LocationException.class)
     public void testGetSectorOutOfBounds() throws Exception {
-        Integer width = new Integer(p.getUniverseProperty(PropertyKeys.WIDTH.key()));
+        Integer width = new Integer(PropertiesManager.getUniverseProperty(PropertyKeys.WIDTH.key()));
         Location location = new Location(width, 2, 3);
         Sector oops = universe.getSector(location);
     }

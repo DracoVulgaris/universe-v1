@@ -1,9 +1,8 @@
 package com.universe.environment;
 
 import com.universe.exceptions.LocationException;
-import com.universe.exceptions.UniverseException;
+import com.universe.exceptions.PropertiesException;
 import com.universe.utilities.PropertiesManager;
-import com.universe.utilities.PropertyKeys;
 
 /**
  * The width, height and depth (x, y, z) coordinates of a {@link Sector}
@@ -17,11 +16,10 @@ public class Location {
     private Integer depth;
     private PropertiesManager propertiesManager;
 
-    public Location(Integer width, Integer height, Integer depth) throws LocationException, UniverseException {
-        propertiesManager = new PropertiesManager();
-        Integer universeMaxWidth = new Integer(propertiesManager.getUniverseProperty(PropertyKeys.WIDTH.key()));
-        Integer universeMaxHeight = new Integer(propertiesManager.getUniverseProperty(PropertyKeys.HEIGHT.key()));
-        Integer universeMaxDepth = new Integer(propertiesManager.getUniverseProperty(PropertyKeys.DEPTH.key()));
+    public Location(Integer width, Integer height, Integer depth) throws PropertiesException, LocationException {
+        Integer universeMaxWidth = PropertiesManager.UNIVERSE_MAX_WIDTH;
+        Integer universeMaxHeight = PropertiesManager.UNIVERSE_MAX_HEIGHT;
+        Integer universeMaxDepth = PropertiesManager.UNIVERSE_MAX_DEPTH;
         if (width > universeMaxWidth - 1 || height > universeMaxHeight - 1 || depth > universeMaxDepth - 1) {
             String message = "The location (" + width + ", " + height + ", " + depth + ") is outside the boundary of the Universe.";
             throw new LocationException(message);
