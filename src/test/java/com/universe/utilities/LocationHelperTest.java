@@ -30,7 +30,7 @@ public class LocationHelperTest {
         assertNotNull(response);
         Integer actual = response.get(centrePoint);
         assertEquals(new Integer(100), actual);
-        assertTrue(response.size() == 1);
+        assertEquals(1, response.size());
     }
 
     @Test
@@ -39,21 +39,21 @@ public class LocationHelperTest {
         assertNotNull(response);
         Integer actual = response.get(centrePoint);
         assertEquals(new Integer(0), actual);
-        assertTrue(response.size() == 1);
+        assertEquals(1, response.size());
     }
 
     @Test
     public void getWeightedLocationMatrixSpreadThree() throws Exception {
         Map<Location, Integer> response = getWeightedLocationMatrix(centrePoint, 100, 3);
         assertNotNull(response);
-        assertTrue(response.size() == cubeSizeCalculator(3));
+        assertEquals(cubeSizeCalculator(3), new Integer(response.size()));
     }
 
     @Test
     public void getWeightedLocationMatrixSpreadFour() throws Exception {
         Map<Location, Integer> response = getWeightedLocationMatrix(centrePoint, 100, 4);
         assertNotNull(response);
-        assertTrue(response.size() == cubeSizeCalculator(4));
+        assertEquals(cubeSizeCalculator(4), new Integer(response.size()));
     }
 
     @Test
@@ -101,7 +101,6 @@ public class LocationHelperTest {
         Integer actualQuantity = response.get(testLocation);
         assertEquals(new Integer(50), actualQuantity);
     }
-
 
     private Integer cubeSizeCalculator(Integer spread) {
         Integer column = (spread  * 2) + 1;
