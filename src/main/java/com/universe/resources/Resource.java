@@ -1,4 +1,4 @@
-package com.universe.elements;
+package com.universe.resources;
 
 /**
  * Consumable resource that is required by all lifeforms in varying degrees.
@@ -16,7 +16,7 @@ package com.universe.elements;
      * @param amount the amount of the resource requested
      * @return the amount of resource that can be returned
      */
-    Integer consume(Integer amount) {
+    public Integer consume(Integer amount) {
         Integer suppliedAmount;
         if (amount > quantity) {
             suppliedAmount = quantity;

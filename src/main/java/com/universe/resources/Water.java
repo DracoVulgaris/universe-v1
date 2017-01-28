@@ -1,4 +1,4 @@
-package com.universe.elements;
+package com.universe.resources;
 
 /**
  * An amount of drinkable Water that can be consumed by a life form that holds this resource

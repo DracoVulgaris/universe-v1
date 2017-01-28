@@ -1,4 +1,4 @@
-package com.universe.elements;
+package com.universe.resources;
 
 import org.junit.Before;
 import org.junit.Test;
