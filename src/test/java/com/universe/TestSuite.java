@@ -1,8 +1,10 @@
 package com.universe;
 
-import com.universe.elements.FoodTest;
-import com.universe.elements.OxygenTest;
-import com.universe.elements.WaterTest;
+import com.universe.pollution.CarbonDioxideTest;
+import com.universe.pollution.ExcrementTest;
+import com.universe.resources.FoodTest;
+import com.universe.resources.OxygenTest;
+import com.universe.resources.WaterTest;
 import com.universe.environment.LocationTest;
 import com.universe.environment.SectorTest;
 import com.universe.environment.UniverseTest;
@@ -22,7 +24,9 @@ import org.junit.runner.RunWith;
         SectorTest.class,
         RandomiserTest.class,
         PropertiesManagerTest.class,
-        LocationHelperTest.class
+        LocationHelperTest.class,
+        ExcrementTest.class,
+        CarbonDioxideTest.class
 })
 public class TestSuite {
     //nothing
